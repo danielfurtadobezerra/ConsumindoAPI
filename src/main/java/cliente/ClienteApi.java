@@ -10,6 +10,7 @@ import java.net.URL;
 import entidade.UpdadeVo;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.UnmarshalException;
 import jakarta.xml.bind.Unmarshaller;
 
 public class ClienteApi {
@@ -45,6 +46,8 @@ public class ClienteApi {
 			con.disconnect();
 
 		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (UnmarshalException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();

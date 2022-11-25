@@ -14,11 +14,11 @@ public class UpdateDAO {
 	ScheduledExecutorService scheduledExecutorService =
 	        Executors.newScheduledThreadPool(1);
 	
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	ScheduledFuture scheduledFuture =
 		    scheduledExecutorService.schedule(new Callable() {
 		    	public void inserirDados() {
-		    		Conexao c = new Conexao("localhost","5432","restUpdate","admin","admin");
+		    		Conexao c = new Conexao("localhost","5432","restUpdate","postgres","postgres");
 		    		c.conect();
 		    		UpdadeVo up = new UpdadeVo();
 		    		String sql = "insert into update (id, idUpdate, currentR eleaseDate, cvrfUrl, documentTitle, initialReleaseDate, severity)"+
@@ -29,8 +29,14 @@ public class UpdateDAO {
 		    			System.out.println("Erro");
 		    		}
 		    	}
+
+				@Override
+				public Object call() throws Exception {
+					// TODO Auto-generated method stub
+					return null;
+				}
 		    },
 		    300,
 		    TimeUnit.SECONDS);
 }
-}
+
