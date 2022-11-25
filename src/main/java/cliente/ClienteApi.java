@@ -26,7 +26,7 @@ public class ClienteApi {
 			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
 				throw new RuntimeException("HTTP error code : " + con.getResponseCode());
 			}
-
+ 
 			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(UpdadeVo.class);
